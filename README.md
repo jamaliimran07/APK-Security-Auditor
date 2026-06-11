@@ -1,60 +1,113 @@
 # APK Security Auditor
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Platform](https://img.shields.io/badge/Platform-Kali%20Linux-green)
+![Version](https://img.shields.io/badge/Version-v2.3.2-orange)
+![Android](https://img.shields.io/badge/Android-Security-brightgreen)
+
 A lightweight Android APK Static Analysis Tool developed by **IMRAN SARWER**.
+
+---
 
 ## Overview
 
-APK Security Auditor is a Python-based Android security assessment tool that performs static analysis on APK files. It combines APKTool and JADX to identify common security weaknesses, insecure configurations, exposed components, and risky coding practices.
+APK Security Auditor is a Python-based Android Security Assessment Tool that performs static analysis on Android APK files.
 
-The tool generates professional TXT, JSON, and HTML reports with risk scoring and OWASP MASVS mappings.
+The tool leverages **APKTool** and **JADX** to identify security weaknesses, insecure configurations, exposed components, hardcoded secrets, weak cryptography, and risky coding practices.
+
+It generates professional reports with risk scoring and OWASP MASVS mappings to help security researchers and penetration testers assess Android applications.
 
 ---
 
-## Features
+## Key Features
 
-### Manifest Analysis
+### Android Manifest Analysis
 
-* Debuggable application detection
-* Backup enabled detection
-* Exported Activities, Services, Receivers, Providers
-* Dangerous permission identification
-* Deep Link discovery
-* Custom permission analysis
-* Cleartext traffic detection
+- Debuggable Application Detection
+- Backup Enabled Detection
+- Exported Activities Detection
+- Exported Services Detection
+- Exported Receivers Detection
+- Exported Providers Detection
+- Dangerous Permissions Analysis
+- Deep Link Discovery
+- Custom Permission Analysis
+- Cleartext Traffic Detection
+- Network Security Configuration Analysis
+
+---
 
 ### Source Code Analysis
 
-* Smali code scanning
-* JADX Java source scanning
-* Hardcoded secrets detection
-* API key discovery
-* JWT token detection
-* Firebase endpoint discovery
-* Weak cryptography detection
-* Runtime command execution checks
-* WebView security checks
-* SharedPreferences analysis
-* External storage usage detection
+#### Smali Analysis
 
-### Reporting
+- Hardcoded Secrets Detection
+- API Key Discovery
+- JWT Token Detection
+- Firebase Endpoint Detection
+- SharedPreferences Usage Detection
+- External Storage Usage Detection
+- Runtime Command Execution Detection
+- WebView Security Checks
+- Weak Cryptography Detection
 
-* TXT Report
-* JSON Report
-* HTML Report
-* Risk Score Calculation
-* OWASP MASVS Mapping
-* APK Hashing (MD5, SHA1, SHA256)
+#### JADX Java Source Analysis
+
+- Decompiled Java Source Inspection
+- Security Pattern Detection
+- Risky API Usage Detection
+- Storage Security Checks
+- Network Security Checks
 
 ---
 
-## Requirements
+### Reporting Features
 
-* Python 3
-* APKTool
-* JADX
-* Java Runtime Environment (JRE)
+- TXT Report Generation
+- JSON Report Generation
+- HTML Report Generation
+- APK Hashing
 
-Install dependencies:
+  - MD5
+  - SHA1
+  - SHA256
+
+- Risk Score Calculation
+- OWASP MASVS Mapping
+- Executive Summary Generation
+
+---
+
+## Screenshots
+
+### HTML Security Report
+
+![HTML Report](html-reports.png)
+
+---
+
+### Security Findings
+
+![Security Findings](findings.png)
+
+---
+
+### Generated Reports
+
+![Reports](reports.png)
+
+---
+
+## Installation
+
+### Requirements
+
+- Python 3
+- APKTool
+- JADX
+- Java Runtime Environment (JRE)
+
+### Install Dependencies
 
 ```bash
 sudo apt update
@@ -67,9 +120,20 @@ jadx \
 default-jre
 ```
 
+Verify Installation:
+
+```bash
+python3 --version
+apktool --version
+jadx --version
+java -version
+```
+
 ---
 
 ## Usage
+
+Analyze an APK:
 
 ```bash
 python3 apk_auditor.py app.apk
@@ -85,7 +149,7 @@ python3 apk_auditor.py samples/test.apk
 
 ## Output
 
-Reports are generated automatically:
+After execution, the tool automatically generates:
 
 ```text
 reports/
@@ -96,16 +160,21 @@ reports/
 
 ---
 
-## Sample Findings
+## Example Findings
 
-* App is debuggable
-* Backup is enabled
-* Exported Activities
-* Hardcoded Secrets
-* Weak Cryptography
-* Insecure HTTP URLs
-* SharedPreferences Usage
-* External Storage Access
+The tool can detect:
+
+- Debuggable Applications
+- Backup Enabled Applications
+- Exported Components
+- Hardcoded Secrets
+- Weak Cryptography
+- Insecure HTTP URLs
+- SharedPreferences Usage
+- External Storage Access
+- Firebase Endpoints
+- Runtime Command Execution
+- WebView Security Issues
 
 ---
 
@@ -116,43 +185,79 @@ APK-Security-Auditor/
 │
 ├── apk_auditor.py
 ├── README.md
-├── samples/
+├── .gitignore
+│
 ├── reports/
 ├── output/
-└── screenshots/
+├── screenshots/
+│
+├── findings.png
+├── html-reports.png
+└── reports.png
 ```
 
 ---
 
-## Roadmap
+## Current Capabilities
 
-Future versions will include:
+| Feature | Status |
+|----------|----------|
+| APKTool Integration | ✅ |
+| JADX Integration | ✅ |
+| Manifest Analysis | ✅ |
+| Smali Analysis | ✅ |
+| Java Source Analysis | ✅ |
+| Risk Scoring | ✅ |
+| HTML Reports | ✅ |
+| JSON Reports | ✅ |
+| OWASP MASVS Mapping | ✅ |
 
-* VirusTotal Integration
-* MobSF Integration
-* SSL Pinning Detection
-* Firebase Security Analysis
-* APK Signing Verification
-* Frida Detection
-* Root Detection Analysis
-* PDF Report Generation
-* CVSS Scoring
-* MITRE ATT&CK Mapping
+---
+
+## Roadmap (v3.0)
+
+Future improvements:
+
+- VirusTotal API Integration
+- MobSF Integration
+- SSL Pinning Detection
+- APK Certificate Analysis
+- APK Signing Verification
+- Firebase Misconfiguration Checks
+- Frida Detection
+- Root Detection Analysis
+- Emulator Detection
+- PDF Report Generation
+- CVSS Scoring
+- MITRE ATT&CK Mapping
 
 ---
 
 ## Author
 
-**IMRAN SARWER**
+### IMRAN SARWER
 
-Android Application Security Research Project
+Cyber Security Student | Android Security Researcher
 
-Developed for learning Android Security, Static Analysis, and Secure Mobile Application Assessment.
+Developed as a practical Android Application Security Analysis project to strengthen Mobile Security, Secure Coding Review, and Static Analysis skills.
+
+GitHub:
+https://github.com/jamaliimran07
 
 ---
 
 ## Disclaimer
 
-This tool is intended for educational purposes, security research, and authorized security assessments only.
+This tool is intended for:
 
-Always obtain proper authorization before analyzing third-party applications.
+- Educational Purposes
+- Security Research
+- Authorized Security Assessments
+
+Always obtain proper authorization before testing or analyzing third-party applications.
+
+The author assumes no responsibility for misuse of this tool.
+
+---
+
+⭐ If you find this project useful, consider giving it a star.
